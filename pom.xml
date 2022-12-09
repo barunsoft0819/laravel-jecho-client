@@ -6,7 +6,7 @@
 
     <groupId>barunsoft0819</groupId>
     <artifactId>laravel-jecho-client</artifactId>
-    <version>1.0</version>
+    <version>1.0.2</version>
     <build>
         <plugins>
             <plugin>
