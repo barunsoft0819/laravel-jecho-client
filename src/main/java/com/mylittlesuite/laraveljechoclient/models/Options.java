@@ -16,13 +16,13 @@ public class Options {
     public String url = "http://localhost";
 
     /**
-     * The Token.
-     */
-    public String token = "";
-
-    /**
      * The Namespace.
      */
     public String namespace = "";
+	
+    /**
+     * The Headers.
+     */
+	public JSONObject headers = new JSONObject();
 
 }

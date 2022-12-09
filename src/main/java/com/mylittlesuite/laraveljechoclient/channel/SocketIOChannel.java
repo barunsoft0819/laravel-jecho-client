@@ -67,7 +67,7 @@ public class SocketIOChannel extends Channel {
      * @return the socket io channel
      */
     public SocketIOChannel subscribe() {
-        this.socket.emit("subscribe", buildPayload(channelName, options.token));
+        this.socket.emit("subscribe", buildPayload(channelName, options.headers));
 
         return this;
     }
@@ -100,7 +100,7 @@ public class SocketIOChannel extends Channel {
     public void unsubscribe() {
         this.unbind();
 
-        this.socket.emit("unsubscribe", buildPayload(channelName, options.token));
+        this.socket.emit("unsubscribe", buildPayload(channelName, options.headers));
     }
 
     private void configureReconnector() {
@@ -127,12 +127,9 @@ public class SocketIOChannel extends Channel {
         this.events.clear();
     }
 
-    private static JSONObject buildPayload(String channelName, String token) {
+    private static JSONObject buildPayload(String channelName, JSONObject headers) {
         JSONObject root = null;
         try {
-            JSONObject headers = new JSONObject();
-            headers.put("Authorization", "Bearer " + token);
-
             JSONObject auth = new JSONObject();
             auth.put("headers", headers);
 
